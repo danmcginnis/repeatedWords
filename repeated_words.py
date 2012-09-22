@@ -24,7 +24,8 @@ if filename == '-h':
 f = open(filename, 'r')
 
 input_text = f.read()
-ignore = ['the', 'but', 'they', 'this', 'so', 'a', 'the', 'is', 'of', 'and', 'to', 'that', 'in', 'on', 'you', 'for', 'as', 'are', 'i', 'with', 'it', 'was', 'be', 'at', 'or', 'not', 'an', 'all', 'if']
+ignore = ['the', 'be', 'to', 'of', 'and', 'a', 'in', 'that', 'have', 'i', 'it', 'for', 
+'not', 'on', 'with', 'he', 'as', 'you', 'do', 'at', 'this', 'but', 'his', 'by', 'from']
 ignored = 0
 single_words = 0
 ignore_flag = True

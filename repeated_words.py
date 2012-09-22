@@ -10,35 +10,37 @@ from sys import argv
 from collections import Counter
 import string
 
-script, filename = argv
+script, *filename = argv
 
-if filename == '-h':
+if not bool(filename) or filename[0] == '-h' :
 	print("""
 	This program will analyze a text file for repeated words. 
 	The 25 most common per Wikipedia are ignored. Results are printed 
-	in descending order by number used. 
+	in descending order by number used. Anytime more then 100 unique
+	words are found words found once are not displayed.
 	Usage: command <textfile to be analyzed>""")
 	exit(0)
 	
 	
-f = open(filename, 'r')
-
-input_text = f.read()
 ignore = ['the', 'be', 'to', 'of', 'and', 'a', 'in', 'that', 'have', 'i', 'it', 'for', 
 'not', 'on', 'with', 'he', 'as', 'you', 'do', 'at', 'this', 'but', 'his', 'by', 'from']
+words = 0
 ignored = 0
 single_words = 0
 ignore_flag = True
 word_list = {}
-input_text = (''.join(ch.lower() for ch in input_text if ch not in set(string.punctuation))).rstrip().lstrip().split(' ')
 
-for word in input_text:
-	if word in ignore and ignore_flag:
-		ignored += 1
-	elif word in word_list:
-		word_list[word] += 1
-	else:
-		word_list[word] = 1
+
+for line in open(filename[0]):
+	input_text = (''.join(ch.lower() for ch in line if ch not in set(string.punctuation))).rstrip().lstrip().split(' ')
+	for word in input_text:
+		words += 1
+		if word in ignore and ignore_flag:
+			ignored += 1
+		elif word in word_list:
+			word_list[word] += 1
+		else:
+			word_list[word] = 1
 		
 for value in sorted(word_list, key = word_list.get, reverse = False):
 	if word_list[value] == 1 and len(word_list) > 100:
@@ -47,14 +49,14 @@ for value in sorted(word_list, key = word_list.get, reverse = False):
 		print(value, '=>', word_list[value])
 
 print()
-print(len(input_text), " words were entered.")
+print(words, " words were entered.")
 print(len(word_list), " words are unique.")
 if ignored > 0:
 	print(ignored, " common words were ignored.")
 if single_words > 0:
 	print(single_words, " words used only once were not printed.\n")
 	
-f.close()
+#f.close()
 exit(0)
 
 #common = Counter(word_list)

@@ -24,20 +24,22 @@ help = """
 	words are found words found once are not displayed.
 	Usage: command <textfile to be analyzed>"""
 
+
 if not bool(filename) or filename[0] == '-h' :
 	print(help)
 	exit(0)
-	
-	
+
+		
 ignore = ['the', 'be', 'to', 'of', 'and', 'a', 'in', 'that', 'have', 'i', 
 	'it', 'for', 'not', 'on', 'with', 'he', 'as', 'you', 'do', 'at', 'this',
 	 'but', 'his', 'by', 'from']
-	 
-words = 0
+
+words = 0	 
 ignored = 0
 single_words = 0
 ignore_flag = True
 word_list = {}
+
 
 for line in open(filename[0]):
 	input_text = ((''.join(ch.lower() for ch in line if ch not in 
@@ -50,12 +52,14 @@ for line in open(filename[0]):
 			word_list[word] += 1
 		else:
 			word_list[word] = 1
+
 		
 for value in sorted(word_list, key = word_list.get, reverse = False):
 	if word_list[value] == 1 and len(word_list) > 100:
 		single_words += 1
 	else:
 		print(value, '=>', word_list[value])
+
 
 print()
 print(words, " words were entered.")
@@ -69,6 +73,5 @@ exit(0)
 
 #common = Counter(word_list)
 #common_list = common.most_common()
-	
 #for x in common_list:
 #	print("%s => %d" % x)

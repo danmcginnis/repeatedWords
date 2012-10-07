@@ -39,7 +39,6 @@ ignore = ['the', 'be', 'to', 'of', 'and', 'a', 'in', 'that', 'have', 'i',
 words = 0
 ignored = 0
 single_words = 0
-ignore_flag = True
 word_list = {}
 
 
@@ -48,7 +47,7 @@ for line in open(filename[0]):
                        set(string.punctuation))).rstrip().lstrip().split(' '))
     for word in input_text:
         words += 1
-        if word in ignore and ignore_flag:
+        if word in ignore:
             ignored += 1
         elif word in word_list:
             word_list[word] += 1

@@ -18,7 +18,7 @@ from collections import Counter
 import string
 import os
 
-script, *filename = argv
+script, filename = argv
 
 help = """
 This program will analyze a text file for repeated words.
@@ -28,9 +28,9 @@ words are found words found once are not displayed.
 Usage: command <textfile to be analyzed>"""
 
 
-print(os.path.isfile(str(filename[0])))
+print(os.path.isfile(str(filename)))
 
-if not os.path.isfile(str(filename[0])):
+if not os.path.isfile(filename):
     print(help)
     exit(0)
 
@@ -45,7 +45,7 @@ single_words = 0
 word_list = {}
 
 
-for line in open(filename[0]):
+for line in open(filename):
     input_text = ((''.join(ch.lower() for ch in line if ch not in
                        set(string.punctuation))).rstrip().lstrip().split(' '))
     for word in input_text:

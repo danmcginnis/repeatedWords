@@ -16,6 +16,7 @@ from sys import exit
 from sys import argv
 from collections import Counter
 import string
+import os
 
 script, *filename = argv
 
@@ -27,7 +28,9 @@ words are found words found once are not displayed.
 Usage: command <textfile to be analyzed>"""
 
 
-if not bool(filename) or filename[0] == '-h':
+print(os.path.isfile(str(filename[0])))
+
+if not os.path.isfile(str(filename[0])):
     print(help)
     exit(0)
 

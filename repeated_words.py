@@ -20,7 +20,7 @@ import os
 
 script, *filename = argv
 
-help = """
+help_message = """
 This program will analyze a text file for repeated words.
 The 25 most common per Wikipedia are ignored. Results are printed
 in descending order by number used. Anytime more then 100 unique
@@ -30,7 +30,7 @@ Usage: command <textfile to be analyzed>"""
 
 # stupid hack to check for valid file and ignore other input
 if not os.path.isfile(str(filename[0])):
-    print(help)
+    print(help_message)
     exit(0)
 
 filename = filename[0]

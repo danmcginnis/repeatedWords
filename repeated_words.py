@@ -18,7 +18,7 @@ from collections import Counter
 import string
 import os
 
-script, filename = argv
+script, *filename = argv
 
 help = """
 This program will analyze a text file for repeated words.
@@ -28,12 +28,12 @@ words are found words found once are not displayed.
 Usage: command <textfile to be analyzed>"""
 
 
-print(os.path.isfile(str(filename)))
-
-if not os.path.isfile(filename):
+# stupid hack to check for valid file and ignore other input
+if not os.path.isfile(str(filename[0])):
     print(help)
     exit(0)
 
+filename = filename[0]
 
 ignore = ['the', 'be', 'to', 'of', 'and', 'a', 'in', 'that', 'have', 'i',
           'it', 'for', 'not', 'on', 'with', 'he', 'as', 'you', 'do', 'at',

@@ -4,14 +4,6 @@
 #clean up exceptions
 #add flag for common words
 
-#	Reads a text file line by line. Adds the words to a dictionary as found
-#	and updates the count as found again.
-#	Punctuation and whitespace are stripped out, words are turned
-#	lowercase.
-#	Common words are ignored.
-#	Words are printed out with the total count starting at the
-#	lowest number.
-
 from sys import exit
 from sys import argv
 from collections import Counter

@@ -21,7 +21,7 @@ Usage: command <textfile to be analyzed>"""
 
 
 # stupid hack to check for valid file and ignore other input
-if not os.path.isfile(str(filename[0])):
+if not filename or not os.path.isfile(str(filename[0])):
     print(help_message)
     exit(0)
 

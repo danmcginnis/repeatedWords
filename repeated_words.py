@@ -67,7 +67,3 @@ if single_words:
 
 exit(0)
 
-#common = Counter(word_list)
-#common_list = common.most_common()
-#for x in common_list:
-#	print("%s => %d" % x)

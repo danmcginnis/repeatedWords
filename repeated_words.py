@@ -53,7 +53,7 @@ for value in sorted(word_list, key=word_list.get, reverse=False):
     if word_list[value] == 1 and len(word_list) > 100:
         single_words += 1
     else:
-        print("f{value} => {word_list[value]}")
+        print(f"{value} => {word_list[value]}")
 
 
 print(f"\n{words} were entered.")

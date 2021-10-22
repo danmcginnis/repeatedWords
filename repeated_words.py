@@ -4,13 +4,12 @@
 #clean up exceptions
 #add flag for common words
 
-from sys import exit
-from sys import argv
-from collections import Counter
+
 import string
 import os
+import sys
 
-script, *filename = argv
+script, *filename = sys.argv
 
 help_message = """
 This program will analyze a text file for repeated words.
@@ -23,7 +22,7 @@ Usage: command <textfile to be analyzed>"""
 # stupid hack to check for valid file and ignore other input
 if not filename or not os.path.isfile(str(filename[0])):
     print(help_message)
-    exit(0)
+    sys.exit(0)
 
 filename = filename[0]
 
@@ -54,16 +53,15 @@ for value in sorted(word_list, key=word_list.get, reverse=False):
     if word_list[value] == 1 and len(word_list) > 100:
         single_words += 1
     else:
-        print(value, '=>', word_list[value])
+        print("f{value} => {word_list[value]}")
 
 
-print()
-print(words, " words were entered.")
-print(len(word_list), " words are unique.")
+print(f"\n{words} were entered.")
+print(f"{len(word_list)} words are unique.")
 if ignored:
-    print(ignored, " common words were ignored.")
+    print(f"{ignored} common words were ignored.")
 if single_words:
-    print(single_words, " words used only once were not printed.\n")
+    print(f"{single_words} words used only once were not printed.\n")
 
-exit(0)
+sys.exit(0)
 
